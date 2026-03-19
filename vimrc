@@ -1,5 +1,8 @@
 " Configuration file for Vim text editor
 "
+" Shared non-GUI settings for both console Vim and gVim. Additional
+" GUI-specific settings are in the 'gvimrc' file.
+"
 " Latest revision: 2026-03-19
 "
 " Created and unlicensed by Mikołaj Bartnicki <mikolaj@bartnicki.org>;
