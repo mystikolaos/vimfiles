@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+# Installs 'retrobox' color scheme for older Vim versions that don't contain it.
+#
+# Must be run from '~/.vim' on Linux or '~/vimfiles' on Windows.
+# Existing files are overwritten without warning or backup!
+#
+# Latest revision: 2026-03-20
+#
+# Created and unlicensed by Mikołaj Bartnicki <mikolaj@bartnicki.org>;
+# please read UNLICENSE file for details.
+
+# Stop and exit on first error.
+set -e
+
+vim_repo_url="https://github.com/vim/vim"
+temp_dir="$(mktemp -d)"
+colorscheme_dir="colors"
+colorscheme_file="retrobox.vim"
+
+write_log() {
+    echo "$0 : ${FUNCNAME[1]}()"
+}
+
+clone_vim_repo() {
+    write_log
+    git clone "$vim_repo_url" "$temp_dir"
+}
+
+copy_retrobox_colorscheme() {
+    write_log
+    mkdir -p "$colorscheme_dir"
+    cp "$temp_dir/runtime/colors/$colorscheme_file" "$colorscheme_dir"
+}
+
+clean_up() {
+    write_log
+    rm -rf "$temp_dir"
+}
+
+main() {
+    write_log
+    clone_vim_repo
+    copy_retrobox_colorscheme
+    clean_up
+}
+
+main
