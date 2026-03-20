@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+# Installs Polish spellcheck dictionary.
+#
+# Must be run from '~/.vim' on Linux or '~/vimfiles' on Windows.
+# Existing files are overwritten without warning or backup!
+#
+# Latest revision: 2026-03-20
+#
+# Created and unlicensed by Mikołaj Bartnicki <mikolaj@bartnicki.org>;
+# please read UNLICENSE file for details.
+
+# Stop and exit on first error.
+set -e
+
+dict_repo_url="https://github.com/LibreOffice/dictionaries"
+temp_dir="$(mktemp -d)"
+locale="pl_PL"
+aff_file="$locale.aff"
+dic_file="$locale.dic"
+spell_dir="spell"
+
+write_log() {
+    echo "$0 : ${FUNCNAME[1]}()"
+}
+
+clone_dict_repo() {
+    write_log
+    git clone "$dict_repo_url" "$temp_dir"
+}
+
+make_spell_file() {
+    write_log
+    mkdir -p "$spell_dir"
+    cp "$temp_dir/$locale/$aff_file" "$spell_dir"
+    cp "$temp_dir/$locale/$dic_file" "$spell_dir"
+    cd "$spell_dir"
+    vim -e -N -u NONE -c "mkspell! pl pl_PL" -c "q"
+    cd ..
+}
+
+clean_up() {
+    write_log
+    rm -rf "$temp_dir"
+    rm "$spell_dir/$aff_file"
+    rm "$spell_dir/$dic_file"
+}
+
+main() {
+    write_log
+    clone_dict_repo
+    make_spell_file
+    clean_up
+}
+
+main
