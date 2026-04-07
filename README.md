@@ -1,6 +1,6 @@
 # Vim files
 
-A set of my configuration files for Vim text editor. This is a compilation of many different configs I made for myself over the long time since I was introduced to Vim in the year 2002. All gathered together, cleaned up and updated. It's my oldest and longest evolving work I've ever published!
+A set of my configuration files for Vim text editor. This is a compilation of many different configs I made for myself over the long time since I was introduced to Vim in the year 2002. All gathered together, cleaned up and updated. It's my oldest and longest evolving work I've ever published; the history you can see here is only a tip of the iceberg!
 
 ## Setup
 
