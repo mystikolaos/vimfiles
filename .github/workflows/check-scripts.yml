@@ -1,0 +1,42 @@
+# GitHub Actions test for optional component installation scripts;
+# expects scripts to return 0 and make result files, fails otherwise.
+#
+# Latest revision: 2026-04-07
+#
+# Created and unlicensed by Mikołaj Bartnicki <mikolaj@bartnicki.org>;
+# please read UNLICENSE file for details.
+
+name: Check scripts
+
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  test-polish:
+    uses: mystikolaos/actions/.github/workflows/check-shell-command.yml@main
+    with:
+      packages: "git vim"
+      command: "./polish_spell"
+      make-executable: true
+      expected-file: "./spell/pl.utf-8.spl"
+  test-retrobox:
+    uses: mystikolaos/actions/.github/workflows/check-shell-command.yml@main
+    with:
+      packages: "git"
+      command: "./retrobox_scheme"
+      make-executable: true
+      expected-file: "./colors/retrobox.vim"
+  test-indent:
+    uses: mystikolaos/actions/.github/workflows/check-shell-command.yml@main
+    with:
+      packages: "git sed"
+      command: "./shell_indent"
+      make-executable: true
+      expected-file: "./indent/sh.vim"
+  test-tabs:
+    uses: mystikolaos/actions/.github/workflows/check-shell-command.yml@main
+    with:
+      packages: "curl"
+      command: "./smart_tabs"
+      make-executable: true
+      expected-file: "./plugin/smart_tabs.vim"
