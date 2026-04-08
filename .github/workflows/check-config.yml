@@ -1,0 +1,24 @@
+# GitHub Actions syntax check for Vim and gVim configuration files;
+# expects Vim calls to exit with code 0, fails otherwise.
+#
+# Latest revision: 2026-04-08
+#
+# Created and unlicensed by Mikołaj Bartnicki <mikolaj@bartnicki.org>;
+# please read UNLICENSE file for details.
+
+name: Check scripts
+
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  test-vimrc:
+    uses: mystikolaos/actions/.github/workflows/check-shell-command.yml@main
+    with:
+      packages: "vim"
+      command: "vim -Nu NONE -U NONE -e -s -c 'source ./vimrc' -c 'qa!'"
+  test-gvimrc:
+    uses: mystikolaos/actions/.github/workflows/check-shell-command.yml@main
+    with:
+      packages: "vim"
+      command: "vim -Nu NONE -U NONE -e -s -c 'source ./gvimrc' -c 'qa!'"
