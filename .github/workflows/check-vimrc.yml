@@ -1,12 +1,12 @@
 # GitHub Actions syntax check for Vim and gVim configuration files;
-# expects Vim calls to exit with code 0, fails otherwise.
+# fails when vimrc/gvimrc files are malformed, succeeds otherwise.
 #
-# Latest revision: 2026-04-08
+# Latest revision: 2026-04-10
 #
 # Created and unlicensed by Mikołaj Bartnicki <mikolaj@bartnicki.org>;
 # please read UNLICENSE file for details.
 
-name: Check scripts
+name: Check vimrc
 
 on:
   push:
