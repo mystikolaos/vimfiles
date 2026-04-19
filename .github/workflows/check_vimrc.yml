@@ -1,7 +1,7 @@
 # GitHub Actions syntax check for Vim and gVim configuration files;
 # fails when vimrc/gvimrc files are malformed, succeeds otherwise.
 #
-# Latest revision: 2026-04-10
+# Latest revision: 2026-04-20
 #
 # Created and unlicensed by Mikołaj Bartnicki <mikolaj@bartnicki.org>;
 # please read UNLICENSE file for details.
@@ -13,12 +13,12 @@ on:
   workflow_dispatch:
 jobs:
   test-vimrc:
-    uses: mystikolaos/actions/.github/workflows/check-shell-command.yml@main
+    uses: mystikolaos/actions/.github/workflows/check_shell_command.yaml@main
     with:
       packages: "vim"
       command: "vim -Nu NONE -U NONE -e -s -c 'source ./vimrc' -c 'qa!'"
   test-gvimrc:
-    uses: mystikolaos/actions/.github/workflows/check-shell-command.yml@main
+    uses: mystikolaos/actions/.github/workflows/check_shell_command.yaml@main
     with:
       packages: "vim"
       command: "vim -Nu NONE -U NONE -e -s -c 'source ./gvimrc' -c 'qa!'"
