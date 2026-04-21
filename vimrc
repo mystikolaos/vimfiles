@@ -3,7 +3,7 @@
 " Shared non-GUI settings for both console Vim and gVim. Additional
 " GUI-specific settings are in the 'gvimrc' file.
 "
-" Latest revision: 2026-03-20
+" Latest revision: 2026-04-21
 "
 " Created and unlicensed by Mikołaj Bartnicki <mikolaj@bartnicki.org>;
 " please read UNLICENSE file for details.
@@ -139,7 +139,10 @@ if has("autocmd")
     autocmd BufWritePre /tmp/pico.* :%s/^--$/--\ /ge
 
     " Format source code in the current buffer using the external tool.
-    " - formatter: the external formatting command.
+    " Parameters:
+    "   formatter - the external formatting command.
+    " Example:
+    "   Format_source_code("gofmt")
     function! Format_source_code(formatter)
         let l:pos = getpos(".")
         execute '1,$!' . a:formatter

@@ -4,7 +4,7 @@
 " defined in the 'vimrc' file. This file is an extension of 'vimrc' and does
 " not replace it. Make sure both are properly placed.
 "
-" Latest revision: 2026-03-20
+" Latest revision: 2026-04-21
 "
 " Created and unlicensed by Mikołaj Bartnicki <mikolaj@bartnicki.org>;
 " please read UNLICENSE file for details.
@@ -27,7 +27,10 @@ colorscheme retrobox
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set font face and size.
-" - size: desired font size.
+" Parameters:
+"   size - desired font size.
+" Example:
+"   Set_font(12)
 function! Set_font(size)
     if has("unix")
         execute 'set guifont=Monospace\ ' . a:size
