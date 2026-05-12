@@ -3,7 +3,7 @@
 " Shared non-GUI settings for both console Vim and gVim.
 " Additional settings for GUI are in the 'gvimrc' file.
 "
-" Latest revision: 2026-04-27
+" Latest revision: 2026-05-12
 "
 " Created and unlicensed by Mikołaj Bartnicki <mikolaj@bartnicki.org>;
 " please read UNLICENSE file for details.
@@ -74,6 +74,11 @@ set ignorecase
 set smartcase
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set cursor shape: | in INSERT mode, _ in REPLACE, block in NORMAL.
+let &t_SI = "\e[6 q"
+let &t_SR = "\e[4 q"
+let &t_EI = "\e[2 q"
+
 " Display cursor position at the bottom of the screen.
 set ruler
 
